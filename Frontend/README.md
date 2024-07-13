@@ -21,9 +21,9 @@ After deployment, you can interact with the contract using its ABI (Application 
 
 ## Frontend
 The frontend is created using react and vite. Clone the repo then run these commands:
+This will allow you to interact with the task management contract from the frontend. 
 
 ```sh
 npm install
 npm run dev
-``
-This will allow you to interact with the task management contract from the frontend. 
+
