@@ -8,16 +8,16 @@ import {
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import useCreateTodo from "@/hooks/useCreateTodo";
+import useCreateTasks from "@/hooks/useCreateTasks";
 
 export default function Cards() {
-  const { createTodo, todos, isLoading, error } = useCreateTodo();
+  const { createTodo, todos, isLoading, error } = useCreateTasks();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const title = e.currentTarget.elements.title.value;
     const description = e.currentTarget.elements.description.value;
-    createTodo(title, description);
+    createTask(title, description);
   };
 
   // Display a loading message while todos are being fetched
@@ -30,11 +30,11 @@ export default function Cards() {
     return <div>Error: {error.message}</div>; // Adjust based on how you handle errors in useCreateTodo
   }
 
-  function handleEdit(todo: TodoList): void {
+  function implEdit(task: TaskList): void {
     throw new Error("Function not implemented.");
   }
 
-  function handleDelete(index: number): void {
+  function implDelete(index: number): void {
     throw new Error("Function not implemented.");
   }
 
@@ -60,7 +60,7 @@ export default function Cards() {
 
       <Card className="w-[600px] mt-3 mx-auto p-2">
         <h1 className="text-center font-bold">Todo List</h1>
-        {todos.map((todo, index) => (
+        {todos.map((task, index) => (
           <Card key={index} className="mb-2 ">
             <CardHeader></CardHeader>
             <CardContent className="flex justify-between">
@@ -70,8 +70,8 @@ export default function Cards() {
               </div>
 
               <div className="flex justify-end space-x-2">
-                <Button onClick={() => handleEdit(todo)}>Edit</Button>
-                <Button onClick={() => handleDelete(index)}>Delete</Button>
+                <Button onClick={() => implEdit(todo)}>Edit</Button>
+                <Button onClick={() => implDelete(index)}>Delete</Button>
               </div>
             </CardContent>
           </Card>
