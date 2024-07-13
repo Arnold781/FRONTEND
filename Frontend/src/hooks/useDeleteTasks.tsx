@@ -9,12 +9,12 @@ import {
 } from "@web3modal/ethers/react";
 import { toast } from "sonner";
 
-const useDeleteTodo = () => {
+const useDeleteTasks = () => {
   const [todo, setTodo] = useState(null);
   const { chainId } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
 
-  const deleteTodo = async (index: number) => {
+  const deleteTask = async (index: number) => {
     if (!isSupportedChain(chainId)) return toast.error("Wrong network");
     const readWriteProvider = getProvider(walletProvider);
     const signer = await readWriteProvider.getSigner();
@@ -28,4 +28,4 @@ const useDeleteTodo = () => {
   };
 };
 
-export default useDeleteTodo;
+export default useDeleteTask;
