@@ -17,13 +17,13 @@ interface TodoList {
 }
 
 // Hook to manage Todos
-const useTodos = () => {
+const useTasks = () => {
   const { chainId } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
   const [todos, setTodos] = useState<TodoList[]>([]);
 
   // Function to create a new Todo
-  const createTodo = useCallback(
+  const createTasks = useCallback(
     async (title: string, description: string) => {
       if (!isSupportedChain(chainId)) return toast.error("Wrong network");
 
@@ -52,7 +52,7 @@ const useTodos = () => {
     [chainId, walletProvider]
   );
 
-  const fetchTodos = useCallback(async () => {
+  const fetchTasks = useCallback(async () => {
     if (!isSupportedChain(chainId)) {
       console.error("Unsupported chain:", chainId);
       return;
